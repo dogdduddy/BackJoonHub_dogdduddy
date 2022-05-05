@@ -1,7 +1,6 @@
 class Solution {
     fun solution(progresses: IntArray, speeds: IntArray): IntArray {
-        var temp = arrayListOf<Int>()
-        var day = 1
+        var answer = intArrayOf()
         var pivot = 0
         val Len = speeds.size
         
@@ -20,16 +19,9 @@ class Solution {
                 }
             }
             if(cnt>0) {
-                temp.add(cnt)
+                answer = answer.plus(cnt)
             }
-            day++
         }
-        print("test")
-        var answer = IntArray(temp.size)
-        for(i in 0 until temp.size) {
-            answer[i] = temp[i]
-        }
-        
         return answer
     }
 }
