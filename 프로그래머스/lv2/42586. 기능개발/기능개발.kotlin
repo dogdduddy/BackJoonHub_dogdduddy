@@ -1,0 +1,35 @@
+class Solution {
+    fun solution(progresses: IntArray, speeds: IntArray): IntArray {
+        var temp = arrayListOf<Int>()
+        var day = 1
+        var pivot = 0
+        val Len = speeds.size
+        
+        while(pivot != Len) {
+            var cnt=0
+            for(i in pivot until Len)
+                    progresses[i] += speeds[i]
+            
+            for(i in pivot until Len) {
+                if(progresses[i] < 100){
+                    break
+                }
+                else{
+                    pivot++
+                    cnt++
+                }
+            }
+            if(cnt>0) {
+                temp.add(cnt)
+            }
+            day++
+        }
+        print("test")
+        var answer = IntArray(temp.size)
+        for(i in 0 until temp.size) {
+            answer[i] = temp[i]
+        }
+        
+        return answer
+    }
+}
