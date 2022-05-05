@@ -1,0 +1,22 @@
+class Solution {
+    fun solution(w: Int, h: Int): Long {
+        var answer: Long = w*h.toLong()
+ 
+        var m:Long = 1
+
+        for(i in 1 until h){
+            if (w%i==0 && h%i==0){
+                m = i.toLong()
+            }
+        }
+        
+        if(((h/m)%2).toInt()==0 && ((w/m)%2).toInt()==0) {
+            answer -= ((w/m + h/m -2)*m)
+        }
+        else {
+            answer -= ((w/m + h/m -1)*m)
+        }
+
+        return answer
+    }
+}
