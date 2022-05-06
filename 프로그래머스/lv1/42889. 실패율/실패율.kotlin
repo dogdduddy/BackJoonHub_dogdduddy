@@ -1,0 +1,45 @@
+class Solution {
+    fun solution(N: Int, stages: IntArray): IntArray {
+        var answer = intArrayOf()
+
+        val total = Array<Int>(N){i->0}
+        var ing = Array<Int>(N){i->0}
+        val score = arrayOfNulls<Double>(N)
+        val rank = Array<Int>(N){i->i+1}
+
+        stages.forEach {
+            if(it>N) {
+                for(i in 0 until N){
+                    total[i]++
+                }
+            }
+            else {
+                for(j in 0 until it) {
+                    total[j]++
+                }
+                ing[it-1]++
+            }
+        }
+        total.forEachIndexed { index, v ->
+            score[index] = ing[index]/v.toDouble()
+        }
+
+
+
+        for(i in 1 until N) {
+            for(j in 0 until N-i) {
+                if (score[j]!! < score[j+1]!!) {
+                    var temp = score[j+1]
+                    score[j+1] = score[j]
+                    score[j] = temp
+
+                    var temp2:Int
+                    temp2 = rank[j+1]
+                    rank[j+1] = rank[j]
+                    rank[j] = temp2
+                }
+            }
+        }
+        return rank.toIntArray()
+    }
+}
