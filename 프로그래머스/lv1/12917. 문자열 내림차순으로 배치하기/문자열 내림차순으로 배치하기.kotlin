@@ -1,0 +1,13 @@
+class Solution {
+    fun solution(s: String): String {
+        var answer = ""
+        var a = mutableListOf<Char>()
+        s.forEach {
+            a.add(it)
+        }
+        a.sortedDescending().forEach {
+            answer += it
+        }
+        return answer
+    }
+}
