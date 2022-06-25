@@ -1,0 +1,26 @@
+def solution(numbers, target):
+    answer = 0
+    # DFS 백트래킹
+    # 반복 / 음수, 양수  2가지
+    # numbers 개수만큼 진행 n
+    # 비교 대상 target and result
+    # 결과 경우의 수 answer
+    
+    answer = DFS(0, numbers, 0, 0, target)
+    
+    return answer
+
+def DFS(answer, numbers, cnt, result, target):
+    if cnt == len(numbers):
+        if result == target:
+            answer += 1
+            return answer
+        return answer
+
+    for i in(-1, 1):
+        result += numbers[cnt]*i
+        answer = DFS(answer, numbers, cnt+1, result, target)
+        result -= numbers[cnt]*i
+    return answer
+
+        
